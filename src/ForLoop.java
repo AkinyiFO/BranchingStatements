@@ -31,6 +31,8 @@ public class ForLoop {
         boolean foundIt = false;
 
         for (i = 0; i < arrayOfInts.length; i++) {
+//            System.out.println("Tracking i: " + i); // test with output
+//            System.out.println("searchFor is 12, while arrayOfInts[i] is now: " + arrayOfInts[i]);  // test with output
             if (arrayOfInts[i] == searchFor) {
                 foundIt = true;
                 break; // unlabeled break statement terminates the innermost switch, for, while, or do-while statement
@@ -61,7 +63,10 @@ public class ForLoop {
 
         search:
         for (i = 0; i < arrayOfInts.length; i++) {
+//            System.out.println("Tracking i: " + i); // test with output
             for (j = 0; j < arrayOfInts[i].length; j++) {
+//                System.out.println("Tracking j: " + j); // test with output
+//                System.out.println("searchFor is 12, while arrayOfInts[i][j] is now: " + arrayOfInts[i][j]);  // test with output
                 if (arrayOfInts[i][j] == searchFor) {
                     foundIt = true;
                     break search;
@@ -76,15 +81,18 @@ public class ForLoop {
         }
     }
 
-    // skips to the end of the innermost loop's body and evaluates the boolean expression that controls the loop
     void continueStatementUnlabeled(){
         String searchMe = "peter piper picked a " + "peck of pickled peppers";
         int numPs = 0;
 
         for (int i = 0; i < searchMe.length(); i++) {
+//            System.out.println("Tracking p count: " + numPs); // test with output
+//            System.out.println("Tracking i: " + i); // test with output
+//            System.out.println("Is this a p: " + searchMe.charAt(i)); // test with output
+
             // interested only in p's
             if (searchMe.charAt(i) != 'p')
-                continue;
+                continue; // skips to the end of the innermost loop's body and evaluates the boolean expression that controls the loop: i < searchMe.length()
 
             // process p's
             numPs++;
@@ -92,30 +100,35 @@ public class ForLoop {
         System.out.println("Found " + numPs + " p's in the string.");
     }
 
-    // skips the current iteration of an outer loop marked with the given label
     void continueStatementLabeled() {
         String searchMe = "Look for a subString in me";
         String subString = "sub";
         boolean foundIt = false;
 
         int max = searchMe.length() - subString.length();
-        System.out.println("searchMe length is: " + searchMe.length() + " subString length is: " + subString.length() +
-                " length difference is: " + (searchMe.length() - subString.length()));
+
+        // test with output
+//        System.out.println("searchMe length is: " + searchMe.length() + " subString length is: " + subString.length() +
+//                " length difference is: " + (searchMe.length() - subString.length()));
 
         test:
         for (int i = 0; i <= max; i++) {
             int n = subString.length();
             int j = i;
             int k = 0;
+//            System.out.println("Before while loop values of i:" + i + ", n:" + n + ", j:" + j + ", k:" + k); // test with output
             while (n-- != 0) {
-                System.out.println("i:" + i + " n:" + n + " j:" + j + " k:" + k); // test with output
+//                System.out.println("After while loop values of i:" + i + " n:" + n + " j:" + j + " k:" + k); // test with output
+//                System.out.println("j++:" + (j+1) + ", k++:" + (k+1)); // test with output
                 if (searchMe.charAt(j++) != subString.charAt(k++)) {
-                    System.out.println(searchMe.charAt(j++) + " " + subString.charAt(k++)); // test with output
-                    continue test;
+                    // test with output
+//                    System.out.println("Last checked searchMe " + searchMe.charAt(j++) +
+//                            " is != subString: " + subString.charAt(k++));
+                    continue test; // skips the current iteration of an outer loop marked with the given label
                 }
             }
             foundIt = true;
-            break test;
+            break; // unlabeled break statement terminates the innermost switch, for, while, or do-while statement
         }
         System.out.println(foundIt ? "Found it" : "Didn't find it");
     }
@@ -125,13 +138,13 @@ public class ForLoop {
 
 //        forLoop.checkFor();
 
-//        forLoop.breakStatementUnlabeled();
+        forLoop.breakStatementUnlabeled();
 
 //        forLoop.breakStatementLabeled();
 
 //        forLoop.continueStatementUnlabeled();
 
-          forLoop.continueStatementLabeled();
+//        forLoop.continueStatementLabeled();
     }
 
 }
